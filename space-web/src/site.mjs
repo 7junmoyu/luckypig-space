@@ -33,8 +33,8 @@ export function renderSiteHtml(template, config) {
     siteJson: JSON.stringify(site).replace(/</g, '\\u003c').replace(/\u2028/g, '\\u2028').replace(/\u2029/g, '\\u2029') };
   const filters = site.id === 'zyt' ? [['other', '前端与鸿蒙']] : [['ai', 'AI 创作'], ['agent', 'Agent 实践'], ['devops', 'DevOps']];
   values.filterTabsHtml = '<button class="filter-tab selected" data-filter="all" aria-pressed="true">全部探索 <span id="total-projects">—</span></button>' + filters.map(([value, label]) => `<button class="filter-tab" data-filter="${value}" aria-pressed="false">${label}</button>`).join('');
-  values.showcaseTitle = site.id === 'zyt' ? '从项目出发，了解我的实践。' : '先看演示，再聊实现。';
-  values.showcaseDescription = site.id === 'zyt' ? '先了解项目功能与技术选择，再查看技能和部署实践，最后通过对话追问。项目以简历说明为依据，具体贡献与成果以详情为准。' : '这里仅展示标记为个人作品的公开内容。建议先播放录屏，再查看过程与贡献说明，最后通过对话追问；具体职责与成果以作品说明为准。';
+  values.showcaseTitle = site.id === 'zyt' ? '想了解我做过什么，可以先看这几个项目。' : '先看演示，再聊实现。';
+  values.showcaseDescription = site.id === 'zyt' ? '这里有项目功能和技术栈说明。想进一步了解某项技能，可以查看下方的实践介绍，也可以打开 AI 助手提问。' : '这里仅展示标记为个人作品的公开内容。建议先播放录屏，再查看过程与贡献说明，最后通过对话追问；具体职责与成果以作品说明为准。';
   values.showcaseStepsHtml = (site.id === 'zyt' ? ['阅读项目说明', '了解技能与部署实践', '带着问题继续交流'] : ['观看功能演示', '阅读过程与贡献', '带着问题继续交流']).map((step) => `<li>${step}</li>`).join('');
   if (site.id === 'zyt' && template.includes('class="source-page"')) template = template.replace(/<main[\s\S]*<\/main>/, `<main class="source-page"><a href="/">← 返回空间</a><h1>作品与资料来源</h1><p>本空间的介绍和项目说明由站主提供，技术方向包括前端、鸿蒙应用与个人项目部署实践。具体贡献、成果和演示素材以各作品说明为准。</p><p>流程封面为本站绘制的概念图，不是实际界面截图。未提供的演示不会用其他人的录屏代替。</p><h2>对话与接入</h2><p>网页会话通过站主配置的模型服务回答；模型与可选搜索状态可在会话中查看。本站提供公开只读MCP和Skill，不执行个人工作流。</p></main>`);
   return template.replace(/%%SITE_([a-zA-Z][a-zA-Z0-9]*)%%/g, (_, key) => ['heroDescriptionHtml', 'heroTagsHtml', 'siteJson', 'logoSvg', 'filterTabsHtml', 'showcaseStepsHtml'].includes(key) ? values[key] : escape(values[key] || ''));

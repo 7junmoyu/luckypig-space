@@ -353,7 +353,7 @@ function newChat() {
   lastChatAttempt = null;
   chatBusy(false);
   $('#chat-messages').replaceChildren();
-  appendMessage('assistant', site.id === 'zyt' ? '你好，欢迎来逛逛。想了解雨彤做过什么，或者找找前端、鸿蒙、AI 辅助开发和部署相关的项目，都可以问我。我会根据这里已经公开的内容回答。' : `你好，我是 ${site.guide}。可以根据公开资料介绍这个空间，或帮你了解${site.topics}。作品来源和个人贡献以详情说明为准。`);
+  appendMessage('assistant', site.id === 'zyt' ? '你好，我是这个网站的 AI 助手。你可以问我张雨彤的技术栈、项目或教育背景。我会依据本站公开资料回答，没有写到的内容会直接说明。' : `你好，我是 ${site.guide}。可以根据公开资料介绍这个空间，或帮你了解${site.topics}。作品来源和个人贡献以详情说明为准。`);
   $('#chat-input').value = '';
   $('#chat-input').focus();
   loadChatStatus();

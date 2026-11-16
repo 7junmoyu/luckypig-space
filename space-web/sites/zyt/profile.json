@@ -1,9 +1,9 @@
 {
   "name": "张雨彤",
   "space": "ZYT Space",
-  "stage": "个人资料预览",
-  "description": "我主要写 Vue 前端，也做移动端和鸿蒙应用。做个人项目时，会用 Python 写后端、把前后端联调跑通，再把服务部署到 Linux 上。",
-  "biography": "2021 年到 2025 年，我在泰州学院读计算机科学与技术本科。目前主要往 Vue 前端方向发展，做过管理后台、移动电商和鸿蒙办公应用。常用 Vue2 / Vue3、Vite、Pinia、Vue Router 和 Axios，实践过组件封装、状态管理、接口对接和权限相关交互。\n\n写移动端时会用到 Vant，也熟悉 uni-app 和小程序；做鸿蒙应用时使用 ArkTS、ArkUI，处理页面导航、网络通信、登录状态与缓存数据。React 和 Hooks 也有相关技术积累；Webpack、前端性能优化、Node.js 和 MySQL 则处于了解阶段。\n\n做个人项目时，我也会用 Python 开发后端，完成前后端接口对接与联调。遇到想尝试的点子，会用 Vibe Coding 的方式让 AI 帮忙推进功能，再结合实际运行结果调整代码、一点点完善。\n\n写完之后，我会自己操作 Linux 服务器，完成打包、构建、编译部署和服务运行；使用 Docker 容器，编写 docker-compose.yml，用 Docker Compose 把服务组织起来。运行时碰到问题，就接着排查和处理。\n\n读书时拿过 2022 年蓝桥杯省级三等奖和校内奖学金，也通过了大学英语四级。想把做过的东西和学到的经验慢慢放在这里，有新的尝试，就再添上一点。",
+  "stage": "个人资料",
+  "description": "我主要做 Vue 前端，也写移动端和鸿蒙应用。个人项目里，我会用 Python 开发后端，完成接口联调，再把服务部署到 Linux 服务器。",
+  "biography": "2021 年到 2025 年，我在泰州学院读计算机科学与技术本科。求职上，我以 Vue 前端方向为主，做过管理后台、移动电商和鸿蒙办公应用。\n\n平时用 Vue2 / Vue3 写页面，配合 Vite、Pinia、Vue Router、Axios 和 Element Plus，做组件封装、状态管理、接口对接和权限相关交互。移动端用过 Vant，也熟悉 uni-app 和小程序；鸿蒙应用使用 ArkTS、ArkUI，涉及页面导航、网络通信、登录状态和数据缓存。React 和 Hooks 也有相关技术积累；Webpack、前端性能优化、Node.js 和 MySQL 还处于了解阶段。\n\n个人项目里，我会用 Python 写后端，做前后端联调。也会用 Vibe Coding 的方式让 AI 辅助开发，再根据实际运行结果调整代码和功能。\n\n部署这部分我也会自己处理：操作 Linux 服务器，完成打包、构建、编译部署，启动服务并排查日常问题。熟悉 Docker 容器服务，能编写 docker-compose.yml，用 Docker Compose 组织服务。\n\n在校期间获得过 2022 年蓝桥杯省级三等奖和校内奖学金，通过了大学英语四级。",
   "interests": [
     "Vue",
     "Python",
@@ -17,7 +17,7 @@
   "skills": [
     {
       "title": "Vue 与 Web 前端",
-      "summary": "HTML/CSS/JavaScript与Vue2/Vue3组件化开发，结合Vite、Pinia、Vue Router、Axios和Element Plus完成业务交互、通用封装与权限交互。",
+      "summary": "用 HTML、CSS、JavaScript 和 Vue2 / Vue3 写页面，配合 Vite、Pinia、Vue Router、Axios 和 Element Plus，完成业务交互、组件封装和权限相关功能。",
       "tags": [
         "Vue",
         "JavaScript",
@@ -29,7 +29,7 @@
     },
     {
       "title": "移动端业务交互",
-      "summary": "使用Vant完成移动端布局与商品列表、收藏、购物车、地址管理等交互；熟悉uni-app和小程序开发。",
+      "summary": "用 Vant 做移动端布局和商品列表、收藏、购物车、地址管理等功能，也熟悉 uni-app 和小程序开发。",
       "tags": [
         "Vant",
         "移动端",
@@ -41,7 +41,7 @@
     },
     {
       "title": "鸿蒙应用开发",
-      "summary": "使用ArkTS、ArkUI与UIAbility实现页面导航、用户状态和网络通信，具备ArkWeb/ArkData及常用缓存管理相关技术积累。",
+      "summary": "用 ArkTS、ArkUI 和 UIAbility 做页面导航、用户状态和网络通信，也有 ArkWeb、ArkData 和缓存管理相关技术积累。",
       "tags": [
         "ArkTS",
         "ArkUI",
@@ -53,7 +53,7 @@
     },
     {
       "title": "Python 后端与接口联调",
-      "summary": "能够使用Python开发后端服务，结合前端页面完成业务功能、接口对接、前后端联调与问题排查。",
+      "summary": "用 Python 开发后端服务，对接前端页面，完成业务功能、前后端联调和问题排查。",
       "tags": [
         "Python",
         "后端开发",
@@ -63,7 +63,7 @@
     },
     {
       "title": "AI 辅助个人项目",
-      "summary": "通过Vibe Coding推进个人项目，结合接口联调和实际运行结果调整代码、完善功能。",
+      "summary": "用 Vibe Coding 的方式让 AI 辅助个人项目开发，结合接口联调和实际运行结果修改代码、完善功能。",
       "tags": [
         "AI辅助编程",
         "Vibe Coding"
@@ -72,7 +72,7 @@
     },
     {
       "title": "Linux 部署与排障",
-      "summary": "自行操作Linux服务器，完成个人项目打包、构建、编译部署与服务运行，排查和处理日常问题。",
+      "summary": "自己操作 Linux 服务器，完成项目打包、构建、编译部署和服务启动，处理日常运行问题。",
       "tags": [
         "Linux",
         "构建部署",
@@ -82,7 +82,7 @@
     },
     {
       "title": "Docker Compose",
-      "summary": "熟悉Docker容器服务，能够编写docker-compose.yml组织服务部署。",
+      "summary": "熟悉 Docker 容器服务，能编写 docker-compose.yml，用 Docker Compose 组织服务部署。",
       "tags": [
         "Docker",
         "Compose"
@@ -90,10 +90,10 @@
       "projectIds": []
     }
   ],
-  "contentNotice": "资料依据本人提供的简历与补充说明；项目具体职责和成果以详情为准。",
+  "contentNotice": "项目和技能来自本人提供的资料，具体开发内容见项目详情。",
   "projects": "/api/projects",
   "updatedAt": "2026-11-16",
-  "introduction": "这里放着我做过的一些项目，也记着把想法慢慢做出来的过程。随便逛逛，有感兴趣的，我们可以接着聊。",
+  "introduction": "这里整理了我做过的项目，主要是前端和鸿蒙应用。Python 后端、接口联调和 Linux 部署的实践，也会陆续补充在这里。",
   "education": {
     "school": "泰州学院",
     "major": "计算机科学与技术",

@@ -6,18 +6,18 @@
   "owner": "张雨彤",
   "guide": "ZYT Guide",
   "topics": "Vue前端、Python后端与联调、鸿蒙应用、AI辅助开发与部署实践",
-  "description": "张雨彤的个人作品与技能空间：以Vue前端为主，结合Python后端与接口联调、鸿蒙应用及Linux/Docker部署实践。",
-  "heroLine1": "把想法，",
-  "heroBefore": "写成",
-  "heroAccent": "可交互的",
-  "heroLast": "作品",
-  "heroDescription": "专注 Vue 前端，\n也把 Python 接口与 Linux 部署一起跑通。",
+  "description": "张雨彤的个人博客，记录 Vue 前端、鸿蒙应用和个人项目开发、部署实践。",
+  "heroLine1": "你好，",
+  "heroBefore": "欢迎",
+  "heroAccent": "来",
+  "heroLast": "逛逛",
+  "heroDescription": "主要做 Vue 前端，\n也写 Python 接口、自己部署服务。",
   "heroTags": [
     "FRONTEND",
     "HARMONYOS",
     "VIBE CODING"
   ],
-  "aboutLine1": "从界面出发。",
-  "aboutLine2": "把作品带到真实运行中。",
-  "collectionNotice": "项目说明整理自个人简历；具体职责、演示素材和成果持续补充。"
+  "aboutLine1": "关于我",
+  "aboutLine2": "项目、技能和一些实践",
+  "collectionNotice": "目前以项目文字说明为主，录屏和演示链接还未提供。"
 }
