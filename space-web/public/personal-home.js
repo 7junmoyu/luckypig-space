@@ -37,11 +37,11 @@ export function mountPersonalHome(site) {
     <div class="personal-about-grid"><div class="personal-story"><p id="profile-description" class="personal-story-lead"></p><p id="profile-biography" class="personal-story-body"></p><button class="text-button" data-question="请介绍张雨彤的教育背景、技能，以及她的项目开发与部署实践。">问问 AI 助手 <span aria-hidden="true">↗</span></button></div>
       <aside class="personal-facts" aria-label="教育背景与个人积累"><div class="personal-education"><p class="fact-label">EDUCATION / 教育背景</p><h3 id="personal-school"></h3><p id="personal-degree"></p><span id="personal-study-period"></span></div><div class="personal-honors"><p class="fact-label">HONORS / 在校荣誉</p><ul id="personal-honors"></ul></div></aside>
     </div>
-    <div class="personal-practice"><article><span>01 / INTERFACE</span><h3>前端开发</h3><p>用 Vue 写页面，封装组件，处理状态管理、接口对接和权限相关交互。</p></article><article><span>02 / CONNECTION</span><h3>接口联调</h3><p>个人项目里会用 Python 写后端，对接前端页面，也用 AI 辅助开发。</p></article><article><span>03 / DEPLOYMENT</span><h3>服务部署</h3><p>自己在 Linux 上打包、部署服务，用 Docker Compose 组织容器，处理运行中的问题。</p></article></div>`;
+    <div class="personal-practice"><article><span>01 / INTERFACE</span><h3>前端开发</h3><p>用 Vue 写页面，封装组件，处理状态管理、接口对接和权限相关交互。</p></article><article><span>02 / CONNECTION</span><h3>接口联调</h3><p>个人项目里会用 Python 写后端，对接前端页面，也用 AI 辅助开发。</p></article><article><span>03 / DEPLOYMENT</span><h3>服务部署</h3><p>在 Linux 上打包、部署服务，用 Docker Compose 组织容器，处理运行中的问题。</p></article></div>`;
   hero.after(about);
   document.querySelector('.desktop-nav').innerHTML = '<a href="#about" class="active">关于我</a><a href="#projects">我的作品</a><a href="#skills-section">技能与实践</a><button data-open-agent>连接 Agent ↗</button>';
   document.querySelector('.site-footer>span').textContent = `${site.owner}的个人博客 · 项目与实践记录`;
-  document.querySelector('.section-intro').innerHTML = '项目的功能和技术栈都写在详情里。<br>目前以文字介绍为主，演示素材后续补充。';
+  document.querySelector('.section-intro').innerHTML = '项目的功能和技术栈都写在详情里。<br>封面处可以左右滑动查看录屏。';
   document.querySelector('#skills-section .section-kicker').textContent = '03 / WHAT I WORK WITH';
   document.querySelector('.projects-section .section-kicker').textContent = '02 / MY PROJECTS';
   document.querySelector('.connection-label .section-kicker').textContent = '04 / BEYOND THE BROWSER';

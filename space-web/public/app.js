@@ -49,6 +49,98 @@ const artwork = {
   metrics: `<svg viewBox="0 0 640 310" role="img" aria-label="使用演示数据绘制的可观测性图表"><defs><linearGradient id="chart-fill" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#cc785c" stop-opacity=".25"/><stop offset="1" stop-color="#cc785c" stop-opacity="0"/></linearGradient></defs><rect width="640" height="310" fill="#241f1b"/><g stroke="#856c5a" opacity=".17"><path d="M70 99H565M70 137H565M70 175H565M70 213H565M120 80V231M200 80V231M280 80V231M360 80V231M440 80V231M520 80V231"/></g><g font-family="monospace" font-size="8" fill="#b79c86" letter-spacing="1.2"><text x="75" y="52">SYSTEM SIGNALS</text><text x="470" y="52">SAMPLE DATA</text></g><path d="m75 203 20-13 21 8 16-38 19 11 20-28 15 12 22-45 20 25 16-12 20 32 21-11 17 23 20-32 15 10 22-41 20 11 22-33 20 20 15-9 20 26 20-17 15 14 20-38 15 8 19-20 20 16v94H75Z" fill="url(#chart-fill)"/><path d="m75 203 20-13 21 8 16-38 19 11 20-28 15 12 22-45 20 25 16-12 20 32 21-11 17 23 20-32 15 10 22-41 20 11 22-33 20 20 15-9 20 26 20-17 15 14 20-38 15 8 19-20 20 16" fill="none" stroke="#dc9677" stroke-width="1.7"/><path d="m75 220 35-5 25 6 30-14 30 8 25-20 40 9 30-10 35 12 30-15 30 8 30-24 40 8 40-17 35 9" fill="none" stroke="#7c9fb3" stroke-width="1.2" opacity=".8"/><g font-family="monospace" font-size="7" fill="#9b7d68"><text x="73" y="253">00:00</text><text x="282" y="253">12:00</text><text x="520" y="253">24:00</text></g><g fill="#dc9677"><circle cx="80" cy="276" r="2"/></g><text x="90" y="279" font-family="monospace" font-size="7" fill="#bca18b">METRICS</text><circle cx="171" cy="276" r="2" fill="#7c9fb3"/><text x="182" y="279" font-family="monospace" font-size="7" fill="#8297a1">TRACES</text><text x="445" y="279" font-family="monospace" font-size="7" fill="#9b7d68">NOT LIVE TELEMETRY</text></svg>`
 };
 
+function localMediaPath(value) {
+  if (typeof value !== 'string' || !value.startsWith('/') || value.startsWith('//')) return '';
+  if (value.includes('\\') || value.includes('..') || /[\u0000-\u0020]/.test(value)) return '';
+  return value;
+}
+
+function detailVisualHtml(project) {
+  const video = localMediaPath(project.video);
+  const cover = artworkHtml(project, true);
+  if (!video) return `<div class="detail-visual">${cover}</div>`;
+  const title = escapeHtml(project.title);
+  const type = video.endsWith('.webm') ? 'video/webm' : 'video/mp4';
+  return `<div class="detail-visual media-stage" data-media-stage tabindex="0" aria-roledescription="轮播" aria-label="${title}的封面和视频"><div class="media-track"><div class="media-slide" data-media-slide>${cover}</div><div class="media-slide" data-media-slide><video class="project-cover" controls playsinline preload="metadata" aria-label="${title}的演示视频"><source src="${escapeHtml(video)}" type="${type}">你的浏览器不支持视频播放。</video></div></div><button type="button" class="media-arrow media-prev" data-media-step="-1" aria-label="查看视频">‹</button><button type="button" class="media-arrow media-next" data-media-step="1" aria-label="查看视频">›</button><div class="media-dots"><button type="button" data-media-index="0" aria-pressed="true">封面</button><button type="button" data-media-index="1" aria-pressed="false">视频</button></div></div>`;
+}
+
+function mountMediaStage(root) {
+  const stage = $('[data-media-stage]', root);
+  if (!stage) return () => {};
+  const track = $('.media-track', stage);
+  const slides = $$('[data-media-slide]', stage);
+  const dots = $$('[data-media-index]', stage);
+  let index = 0;
+  let pointerId = null;
+  let originX = 0;
+  let originY = 0;
+  let delta = 0;
+  let axis = '';
+  const place = (offset = 0, animate = true) => {
+    track.style.transition = animate ? '' : 'none';
+    track.style.transform = `translate3d(${-index * stage.clientWidth + offset}px,0,0)`;
+  };
+  const show = (next) => {
+    index = (next + slides.length) % slides.length;
+    place(0, true);
+    dots.forEach((dot, dotIndex) => {
+      const selected = dotIndex === index;
+      dot.setAttribute('aria-pressed', String(selected));
+      dot.classList.toggle('selected', selected);
+    });
+    const coverLabel = index === 0 ? '查看视频' : '查看封面';
+    $$('[data-media-step]', stage).forEach((button) => button.setAttribute('aria-label', coverLabel));
+    if (index === 0) $$('video', stage).forEach((video) => video.pause());
+  };
+  const finishDrag = (event) => {
+    if (pointerId == null || event.pointerId !== pointerId) return;
+    const moved = axis === 'x' && Math.abs(delta) > 48;
+    const direction = delta < 0 ? 1 : -1;
+    pointerId = null;
+    axis = '';
+    delta = 0;
+    show(moved ? index + direction : index);
+  };
+  const onDown = (event) => {
+    if (event.button > 0 || event.target.closest('button')) return;
+    pointerId = event.pointerId;
+    originX = event.clientX;
+    originY = event.clientY;
+    delta = 0;
+    axis = '';
+  };
+  const onMove = (event) => {
+    if (pointerId == null || event.pointerId !== pointerId) return;
+    const x = event.clientX - originX;
+    const y = event.clientY - originY;
+    if (!axis && Math.hypot(x, y) > 8) axis = Math.abs(x) > Math.abs(y) ? 'x' : 'y';
+    if (axis !== 'x') return;
+    delta = x;
+    if (!stage.hasPointerCapture?.(event.pointerId)) stage.setPointerCapture?.(event.pointerId);
+    if (event.cancelable) event.preventDefault();
+    place(delta, false);
+  };
+  stage.addEventListener('pointerdown', onDown);
+  stage.addEventListener('pointermove', onMove);
+  stage.addEventListener('pointerup', finishDrag);
+  stage.addEventListener('pointercancel', finishDrag);
+  stage.addEventListener('keydown', (event) => {
+    if (event.target.closest('video, button')) return;
+    if (event.key === 'ArrowRight') { event.preventDefault(); show(index + 1); }
+    if (event.key === 'ArrowLeft') { event.preventDefault(); show(index - 1); }
+  });
+  dots.forEach((dot) => dot.addEventListener('click', () => show(Number(dot.dataset.mediaIndex))));
+  $$('[data-media-step]', stage).forEach((button) => button.addEventListener('click', () => show(index + Number(button.dataset.mediaStep))));
+  const onResize = () => place(0, false);
+  window.addEventListener('resize', onResize);
+  show(0);
+  requestAnimationFrame(() => place(0, false));
+  return () => {
+    window.removeEventListener('resize', onResize);
+    $$('video', stage).forEach((video) => video.pause());
+  };
+}
+
 function artworkHtml(project, detail = false) {
   if (project.cover) return `<div class="project-art"><img class="project-cover" src="${escapeHtml(project.cover)}" alt="${escapeHtml(project.title)}的封面" loading="lazy"></div>`;
   if (project.visual === 'creative') {
@@ -133,7 +225,7 @@ async function openProject(id) {
   } finally { clearTimeout(timeout); }
   if (controller.signal.aborted) return;
   if (project.content) { renderPublishedProject(project, detail); return; }
-  detail.innerHTML = `<div class="detail-visual">${artworkHtml(project, true)}</div><div class="detail-inner"><p class="detail-kicker">${project.number} / ${escapeHtml(project.categoryLabel)} / OPEN-SOURCE REFERENCE</p><h2>${escapeHtml(project.title)}</h2><p class="detail-subtitle">${escapeHtml(project.subtitle)}</p><div class="detail-notice">${escapeHtml(project.authorship)}。当前页面用于体验个人作品的展示形式。</div><p class="detail-description">${escapeHtml(project.description)}</p><div class="project-tags">${project.tags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join('')}</div><div class="detail-steps">${project.steps.map((step, index) => `<div class="detail-step"><span>0${index + 1}</span><h3>${escapeHtml(step.title)}</h3><p>${escapeHtml(step.body)}</p></div>`).join('')}</div>${project.referenceMedia ? `<p class="detail-media-label">官方动态素材参考 · Argo CD 官网演示（网络加载）</p><img class="detail-media" src="${escapeHtml(media.argo)}" data-remote="${escapeHtml(project.referenceMedia)}" alt="Argo CD 官方界面的动态演示" loading="lazy">` : ''}<p class="detail-learning">${escapeHtml(project.learning)}</p><div class="detail-source"><div class="detail-credit">资料来源：${escapeHtml(project.source.name)}<br>${escapeHtml(project.mediaCredit)}</div><a class="button button-primary" href="${escapeHtml(project.source.url)}" target="_blank" rel="noopener noreferrer">查看原项目 <span aria-hidden="true">↗</span></a></div><button class="text-button" data-project-chat="${escapeHtml(project.title)}">向 Space Guide 了解这个案例 <span aria-hidden="true">↗</span></button></div>`;
+  detail.innerHTML = `${detailVisualHtml(project)}<div class="detail-inner"><p class="detail-kicker">${project.number} / ${escapeHtml(project.categoryLabel)} / OPEN-SOURCE REFERENCE</p><h2>${escapeHtml(project.title)}</h2><p class="detail-subtitle">${escapeHtml(project.subtitle)}</p><div class="detail-notice">${escapeHtml(project.authorship)}。当前页面用于体验个人作品的展示形式。</div><p class="detail-description">${escapeHtml(project.description)}</p><div class="project-tags">${project.tags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join('')}</div><div class="detail-steps">${project.steps.map((step, index) => `<div class="detail-step"><span>0${index + 1}</span><h3>${escapeHtml(step.title)}</h3><p>${escapeHtml(step.body)}</p></div>`).join('')}</div>${project.referenceMedia ? `<p class="detail-media-label">官方动态素材参考 · Argo CD 官网演示（网络加载）</p><img class="detail-media" src="${escapeHtml(media.argo)}" data-remote="${escapeHtml(project.referenceMedia)}" alt="Argo CD 官方界面的动态演示" loading="lazy">` : ''}<p class="detail-learning">${escapeHtml(project.learning)}</p><div class="detail-source"><div class="detail-credit">资料来源：${escapeHtml(project.source.name)}<br>${escapeHtml(project.mediaCredit)}</div><a class="button button-primary" href="${escapeHtml(project.source.url)}" target="_blank" rel="noopener noreferrer">查看原项目 <span aria-hidden="true">↗</span></a></div><button class="text-button" data-project-chat="${escapeHtml(project.title)}">向 Space Guide 了解这个案例 <span aria-hidden="true">↗</span></button></div>`;
   if (project.referenceMedia) {
     const image = $('.detail-media', detail);
     image.src = media.argo;
@@ -157,17 +249,18 @@ async function openProject(id) {
   $('.detail-source', detail).insertAdjacentHTML('afterend', '<a class="text-button" href="./data/reference-notes.md" download="luckypig-reference-notes.md">下载案例说明文档 ↓</a>');
   $('.detail-source', detail).insertAdjacentHTML('afterend', `<button class="text-button" data-copy-project="${escapeHtml(project.id)}">复制作品链接 ↗</button>`);
   enhanceImages(detail);
-  activeDetailCleanup = () => { $$('video', detail).forEach((video) => video.pause()); };
+  const releaseMedia = mountMediaStage(detail);
+  activeDetailCleanup = () => { releaseMedia(); $$('video', detail).forEach((video) => video.pause()); };
 }
 
 function renderPublishedProject(project, detail) {
   const content = renderRichContent(project.content.html, project.content.baseUrl);
   const firstVideo = !project.demo && content.querySelector('video');
-  detail.innerHTML = `${firstVideo ? '' : `<div class="detail-visual">${artworkHtml(project, true)}</div>`}<div class="detail-inner${firstVideo ? ' recording-detail' : ''}"><p class="detail-kicker">${escapeHtml(project.categoryLabel)} / ${project.demo ? 'REFERENCE' : 'PERSONAL WORK'}</p><h2>${escapeHtml(project.title)}</h2><p class="detail-subtitle">${escapeHtml(project.subtitle)}</p><div class="detail-notice">${escapeHtml(project.authorship)}</div><p class="detail-description">${escapeHtml(project.summary)}</p><div class="project-tags">${project.tags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join('')}</div>${firstVideo ? '<div class="recording-stage"></div>' : ''}<div class="rich-content"></div><div class="detail-credit">${escapeHtml(project.mediaCredit)}</div>${project.source ? `<a class="text-button" href="${escapeHtml(project.source.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(project.source.name)} ↗</a>` : ''}<div class="detail-actions"><button class="text-button" data-copy-project="${escapeHtml(project.id)}">复制作品链接 ↗</button><button class="text-button" data-project-chat="${escapeHtml(project.title)}">通过对话了解这件作品 ↗</button></div></div>`;
+  detail.innerHTML = `${firstVideo ? '' : detailVisualHtml(project)}<div class="detail-inner${firstVideo ? ' recording-detail' : ''}"><p class="detail-kicker">${escapeHtml(project.categoryLabel)} / ${project.demo ? 'REFERENCE' : 'PERSONAL WORK'}</p><h2>${escapeHtml(project.title)}</h2><p class="detail-subtitle">${escapeHtml(project.subtitle)}</p><div class="detail-notice">${escapeHtml(project.authorship)}</div><p class="detail-description">${escapeHtml(project.summary)}</p><div class="project-tags">${project.tags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join('')}</div>${firstVideo ? '<div class="recording-stage"></div>' : ''}<div class="rich-content"></div><div class="detail-credit">${escapeHtml(project.mediaCredit)}</div>${project.source ? `<a class="text-button" href="${escapeHtml(project.source.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(project.source.name)} ↗</a>` : ''}<div class="detail-actions"><button class="text-button" data-copy-project="${escapeHtml(project.id)}">复制作品链接 ↗</button><button class="text-button" data-project-chat="${escapeHtml(project.title)}">通过对话了解这件作品 ↗</button></div></div>`;
   const rich = $('.rich-content', detail);
   if (firstVideo) $('.recording-stage', detail).append(firstVideo);
   rich.append(content);
-  enhanceRecordingPlayers(detail);
+  enhanceRecordingPlayers(rich);
   $$('img, video', detail).forEach((element) => {
     const error = document.createElement('p');
     error.className = 'detail-media-label'; error.hidden = true; error.textContent = '素材暂时无法加载，请稍后重试。';
@@ -178,11 +271,12 @@ function renderPublishedProject(project, detail) {
   enhanceImages(rich);
   $$('[data-creative-canvas]', detail).forEach(drawCreativeStudy);
   detail.parentElement.scrollTop = 0;
-  activeDetailCleanup = () => { $$('video', detail).forEach((video) => video.pause()); };
+  const releaseMedia = mountMediaStage(detail);
+  activeDetailCleanup = () => { releaseMedia(); $$('video', detail).forEach((video) => video.pause()); };
 }
 
 function enhanceImages(root) {
-  $$('img', root).filter((image) => !image.closest('button, a') && !image.classList.contains('texture-layer')).forEach((image) => {
+  $$('img', root).filter((image) => !image.closest('button, a, [data-media-stage]') && !image.classList.contains('texture-layer')).forEach((image) => {
     const button = document.createElement('button');
     button.type = 'button'; button.className = 'image-preview-button';
     button.setAttribute('aria-label', `放大查看：${image.alt || '作品图片'}`);

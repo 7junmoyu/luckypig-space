@@ -64,6 +64,11 @@ test('ZYT curated content never calls original Halo, includes user-supplied skil
   assert.doesNotMatch(JSON.stringify(profile), /FastAPI|Django|Flask|\b1[3-9]\d{9}\b|[\w.+-]+@[\w.-]+\.[a-z]{2,}|全栈开发工程师/i);
   assert.equal(profile.experience, null); assert.equal(profile.skillsVerified, false);
   assert.equal(projects.length, 3); assert.ok(projects.every((p) => !p.demo && p.source === null && !p.content.html.includes('<video')));
+  assert.deepEqual(projects.map((p) => p.video), [
+    '/assets/zyt/projects/zyt-web-admin/suguang-admin.mp4',
+    '/assets/zyt/projects/zyt-web-admin/shop-app.mp4',
+    '/assets/zyt/projects/zyt-web-admin/harmony-office.mp4',
+  ]);
   assert.match(projects[0].content.html, /未提供合作分工或量化成果/);
   assert.equal((await content.getProject('zyt-web-admin')).id, projects[0].id);
   await assert.rejects(content.getProject('space-work-teleagent-cli'), (e) => e.status === 404);

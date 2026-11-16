@@ -10,6 +10,17 @@ dialog{color:var(--text);background:#211e1b;border:1px solid #4d433c;padding:0;b
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.chat-messages{scroll-behavior:auto}}
 /* Published work content keeps the same warm palette as the original studio. */
 .project-cover { width: 100%; height: 100%; object-fit: contain; background: #211b18; }
+.media-stage { position: relative; overflow: hidden; touch-action: pan-y; user-select: none; }
+.media-track { display: flex; height: 100%; transition: transform .35s ease; }
+.media-slide { flex: 0 0 100%; height: 100%; min-width: 0; }
+.media-slide .project-art, .media-slide video.project-cover { width: 100%; height: 100%; }
+.media-arrow { position: absolute; top: 50%; z-index: 3; width: 34px; height: 34px; margin-top: -17px; border-radius: 50%; background: #0f0d0bcc; color: #f3e7df; border: 1px solid #ffffff2e; font-size: 22px; line-height: 1; }
+.media-prev { left: 12px; }
+.media-next { right: 12px; }
+.media-dots { position: absolute; top: 14px; left: 0; right: 0; z-index: 3; display: flex; justify-content: center; gap: 8px; }
+.media-dots button { min-height: 28px; padding: 0 12px; border-radius: 14px; background: #0f0d0bcc; color: #d9cdc4; border: 1px solid #ffffff24; font-size: 11px; }
+.media-dots button[aria-pressed="true"] { background: var(--accent); color: #241912; border-color: transparent; }
+.detail-visual.media-stage .project-art { height: 100%; }
 .rich-content { color: var(--text, #faf9f5); line-height: 1.9; overflow-wrap: anywhere; margin: 30px 0; }
 .rich-content > * + * { margin-top: 18px; }
 .rich-content h1, .rich-content h2, .rich-content h3 { font-size: clamp(20px, 3vw, 30px); margin-top: 30px; }

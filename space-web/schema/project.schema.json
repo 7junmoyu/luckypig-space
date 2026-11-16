@@ -10,6 +10,7 @@
     "category": { "enum": ["ai", "devops", "agent", "other"] },
     "tags": { "type": "array", "items": { "type": "string" } },
     "cover": { "type": "string" },
+    "video": { "type": "string", "description": "Optional same-frame demo video. The project page swipes between cover and video." },
     "demo": { "type": "boolean" },
     "authorship": { "type": "string", "minLength": 1 },
     "source": {
