@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300" role="img" aria-labelledby="title description">
+  <title id="title">Luckypig Space</title>
+  <desc id="description">暖炭色与陶土橙的项目封面，展示项目、录屏与开发实践。</desc>
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#cc785c" stroke-opacity=".08"/></pattern>
+    <radialGradient id="glow"><stop stop-color="#cc785c" stop-opacity=".15"/><stop offset="1" stop-color="#cc785c" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="1200" height="300" rx="20" fill="#181715"/>
+  <rect width="1200" height="300" rx="20" fill="url(#grid)"/>
+  <circle cx="1012" cy="150" r="220" fill="url(#glow)"/>
+  <g font-family="ui-monospace, SFMono-Regular, Consolas, monospace">
+    <circle cx="57" cy="57" r="4" fill="#cc785c"/>
+    <text x="73" y="62" font-size="13" letter-spacing="3" fill="#cda995">PERSONAL SPACE / FOR PEOPLE &amp; AGENTS</text>
+    <text x="52" y="145" font-family="system-ui, -apple-system, sans-serif" font-size="61" font-weight="650" letter-spacing="-2" fill="#f1e7da">Luckypig<tspan fill="#cc785c"> Space</tspan></text>
+    <text x="55" y="192" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="22" fill="#bfb2a3">项目、录屏与开发实践</text>
+    <text x="55" y="252" font-size="12" letter-spacing="2.5" fill="#a88c7c">PORTFOLIO <tspan fill="#cc785c">/</tspan> AI CHAT <tspan fill="#cc785c">/</tspan> MCP</text>
+  </g>
+  <g transform="translate(1003 147)" fill="none" stroke="#cc785c">
+    <circle r="96" stroke-opacity=".35"/>
+    <ellipse rx="96" ry="38" transform="rotate(-34)" stroke-opacity=".75"/>
+    <ellipse rx="96" ry="38" transform="rotate(34)" stroke-opacity=".55"/>
+    <ellipse rx="37" ry="96" stroke-opacity=".4"/>
+    <path d="M-118 0H118M0-118V118" stroke-opacity=".15" stroke-dasharray="3 7"/>
+    <circle cx="-79" cy="-46" r="5" fill="#e7ad8e" stroke="none"/>
+    <circle cx="79" cy="46" r="4" fill="#cc785c" stroke="none"/>
+    <circle cx="0" cy="-96" r="3" fill="#e7ad8e" stroke="none"/>
+    <circle r="6" fill="#cc785c" stroke="none"/>
+  </g>
+</svg>
