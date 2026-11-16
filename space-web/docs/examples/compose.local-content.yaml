@@ -1,0 +1,15 @@
+services:
+  web:
+    volumes:
+      - type: bind
+        source: ./content/zyt
+        target: /app/sites/zyt
+        read_only: true
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ./media/zyt/projects
+        target: /app/public/assets/zyt/projects
+        read_only: true
+        bind:
+          create_host_path: false
