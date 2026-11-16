@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Luckypig public project v1",
+  "type": "object",
+  "required": ["id", "title", "summary", "category", "tags", "demo", "authorship", "status", "url"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-zA-Z0-9][a-zA-Z0-9._-]{0,200}$" },
+    "title": { "type": "string", "minLength": 1 },
+    "summary": { "type": "string" },
+    "category": { "enum": ["ai", "devops", "agent", "other"] },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "cover": { "type": "string" },
+    "demo": { "type": "boolean" },
+    "authorship": { "type": "string", "minLength": 1 },
+    "source": {
+      "type": ["object", "null"],
+      "required": ["name", "url"],
+      "properties": { "name": { "type": "string" }, "url": { "type": "string", "format": "uri" } }
+    },
+    "content": {
+      "description": "Halo rendered release content; browser must sanitize before rendering. Media and document links live in this HTML.",
+      "type": "object",
+      "required": ["html", "baseUrl"],
+      "properties": { "html": { "type": "string" }, "baseUrl": { "type": "string", "format": "uri" } }
+    },
+    "status": { "const": "published" },
+    "publishedAt": { "type": ["string", "null"] },
+    "updatedAt": { "type": ["string", "null"] },
+    "url": { "type": "string" }
+  }
+}

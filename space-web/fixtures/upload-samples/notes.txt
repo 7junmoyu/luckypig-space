@@ -1,0 +1,7 @@
+Luckypig Space 多媒体发布链路测试
+
+这是一条自建功能测试记录，不代表真实工作成果。
+图片：cover.png，确定性测试图。
+视频：clip.mp4，3 秒 H.264 无声测试图。
+文档：notes.txt，用于验证后台上传与前台下载。
+源码：https://github.com/luckypig1209/luckypig-space

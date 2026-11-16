@@ -1,0 +1,23 @@
+{
+  "id": "zyt",
+  "slug": "zyt-space",
+  "name": "ZYT Space",
+  "brand": "zyt",
+  "owner": "张雨彤",
+  "guide": "ZYT Guide",
+  "topics": "Vue前端、Python后端与联调、鸿蒙应用、AI辅助开发与部署实践",
+  "description": "张雨彤的个人作品与技能空间：以Vue前端为主，结合Python后端与接口联调、鸿蒙应用及Linux/Docker部署实践。",
+  "heroLine1": "把想法，",
+  "heroBefore": "写成",
+  "heroAccent": "可交互的",
+  "heroLast": "作品",
+  "heroDescription": "专注 Vue 前端，\n也把 Python 接口与 Linux 部署一起跑通。",
+  "heroTags": [
+    "FRONTEND",
+    "HARMONYOS",
+    "VIBE CODING"
+  ],
+  "aboutLine1": "从界面出发。",
+  "aboutLine2": "把作品带到真实运行中。",
+  "collectionNotice": "项目说明整理自个人简历；具体职责、演示素材和成果持续补充。"
+}

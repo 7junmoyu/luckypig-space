@@ -1,0 +1,77 @@
+name: ${COMPOSE_PROJECT_NAME:-luckypig-release}
+services:
+  halodb:
+    image: ${POSTGRES_IMAGE:-postgres:17.11}
+    platform: ${TARGET_PLATFORM:-linux/amd64}
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: halo
+      POSTGRES_DB: halo
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in the private release .env}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -U halo -d halo"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+  halo:
+    image: ${HALO_IMAGE:-halohub/halo:2.27.2}
+    platform: ${TARGET_PLATFORM:-linux/amd64}
+    restart: unless-stopped
+    depends_on:
+      halodb:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:${HALO_PORT:-8190}:8090"
+    volumes:
+      - halo-data:/root/.halo2
+    environment:
+      JVM_OPTS: -Xms256m -Xmx512m
+      SPRING_R2DBC_URL: r2dbc:pool:postgresql://halodb:5432/halo
+      SPRING_R2DBC_USERNAME: halo
+      SPRING_R2DBC_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD}
+      SPRING_SQL_INIT_PLATFORM: postgresql
+      HALO_EXTERNAL_URL: ${HALO_EXTERNAL_URL:?Set HALO_EXTERNAL_URL}
+    healthcheck:
+      test: [CMD, curl, -fsS, http://localhost:8090/actuator/health/readiness]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 40s
+  web:
+    image: ${SPACE_IMAGE:?Build or load a versioned SPACE_IMAGE first}
+    platform: ${TARGET_PLATFORM:-linux/amd64}
+    init: true
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /tmp:size=32m,mode=1777
+    depends_on:
+      halo:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:${WEB_PORT:-4183}:4173"
+    volumes:
+      - web-settings:/app/.local
+    environment:
+      HOST: 0.0.0.0
+      PORT: "4173"
+      SITE_ID: ${SITE_ID:-luckypig}
+      CONTENT_SOURCE: ${CONTENT_SOURCE:-halo}
+      HALO_URL: http://halo:8090
+      PUBLIC_URL: ${PUBLIC_URL:?Set PUBLIC_URL}
+      HALO_PROJECT_CATEGORY: space-project
+      HALO_PROFILE_SLUG: space-profile
+      CHAT_MODE: ${CHAT_MODE:-deepseek}
+      LLM_BASE_URL: ${LLM_BASE_URL:-https://api.deepseek.com}
+      LLM_MODEL: ${LLM_MODEL:-deepseek-flash}
+      LLM_API_KEY: ${LLM_API_KEY:-}
+      LLM_TIMEOUT_MS: ${LLM_TIMEOUT_MS:-60000}
+      WEB_SEARCH_ENABLED: ${WEB_SEARCH_ENABLED:-false}
+      TAVILY_API_KEY: ${TAVILY_API_KEY:-}
+    stop_grace_period: 150s
+volumes:
+  postgres-data:
+  halo-data:
+  web-settings:

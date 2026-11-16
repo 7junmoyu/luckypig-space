@@ -1,3 +1,5 @@
+> 本 Fork 的个人网站代码位于 [`space-web/`](space-web/README.md)，ZYT 二开从[开发说明](space-web/docs/zyt-development.md)开始。当前开发分支为 `feat/space-content-foundation`。下方保留 Halo 上游说明和许可证，Halo 核心未修改。
+
 <p align="center">
     <a href="https://www.halo.run" target="_blank" rel="noopener noreferrer">
         <img width="100" src="https://www.halo.run/logo" alt="Halo logo" />

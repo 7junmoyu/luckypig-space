@@ -1,0 +1,27 @@
+{
+  "apiVersion": "v1alpha1",
+  "kind": "AnnotationSetting",
+  "metadata": { "name": "luckypig-space-post", "labels": { "theme.halo.run/theme-name": "theme-earth" } },
+  "spec": {
+    "targetRef": { "group": "content.halo.run", "kind": "Post" },
+    "formSchema": [
+      {
+        "$formkit": "select",
+        "name": "space.luckypig.dev/demo",
+        "label": "内容性质",
+        "value": "true",
+        "options": [
+          { "label": "示例或参考案例", "value": "true" },
+          { "label": "个人作品", "value": "false" }
+        ],
+        "help": "参考案例和功能测试请选择示例；个人作品请如实说明自己的贡献。"
+      },
+      { "$formkit": "textarea", "name": "space.luckypig.dev/authorship", "label": "作者贡献说明", "help": "说明你的职责、实际贡献，或注明参考来源。" },
+      { "$formkit": "text", "name": "space.luckypig.dev/subtitle", "label": "作品副标题" },
+      { "$formkit": "text", "name": "space.luckypig.dev/format", "label": "展示形式", "placeholder": "例如：录屏 / 图片 / 文档" },
+      { "$formkit": "text", "name": "space.luckypig.dev/source-name", "label": "来源或演示链接名称" },
+      { "$formkit": "text", "name": "space.luckypig.dev/source-url", "label": "来源或演示链接", "help": "填写可公开访问的 HTTP(S) 地址。" },
+      { "$formkit": "textarea", "name": "space.luckypig.dev/media-credit", "label": "素材来源说明", "help": "图片、视频的作者、来源或使用许可说明。" }
+    ]
+  }
+}

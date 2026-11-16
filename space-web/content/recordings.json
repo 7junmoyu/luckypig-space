@@ -1,0 +1,80 @@
+[
+  {
+    "id": "space-work-teleagent-cli",
+    "slug": "teleagent-cli",
+    "title": "TeleAgent × 智护 CLI",
+    "subtitle": "把运维查询带进 Agent 的对话里",
+    "category": "agent",
+    "tags": ["TeleAgent", "MCP", "智护 CLI", "AI 运维"],
+    "priority": 300,
+    "duration": "01:03",
+    "originalFile": "TeleAgent接入智护CLI.mp4",
+    "trimStart": 44,
+    "summary": "通过 MCP 连接智护 CLI，在 TeleAgent 中发起资产与告警查询，跟踪任务进度，并把执行结果整理为可阅读的运维信息。",
+    "intro": "让已有运维能力成为 Agent 可发现、可调用的工具。这段录屏从已连接的 MCP 工具界面开始，展示一次自然语言请求如何落到实际查询、任务跟踪与结构化结果。",
+    "workflow": [
+      { "title": "连接工具", "body": "在 TeleAgent 的工具设置中，查看智护本地 MCP 连接状态。" },
+      { "title": "提出运维问题", "body": "在会话中请求查询纳管资产、资产状态与近期告警，而不是手动切换多个查询入口。" },
+      { "title": "跟踪执行与阅读结果", "body": "观察任务执行过程，继续查询任务状态，最后查看资产和告警的表格化摘要。" }
+    ],
+    "chapters": [
+      { "seconds": 0, "label": "查看 MCP 连接" },
+      { "seconds": 10, "label": "发起资产与告警查询" },
+      { "seconds": 32, "label": "跟踪执行进度" },
+      { "seconds": 54, "label": "查看结构化结果" }
+    ],
+    "boundary": "本段展示工具接入与查询结果，不表示已实现任意自动运维操作。网页展示版略去了前置登录与剪贴板画面，原始录屏保留在本地。"
+  },
+  {
+    "id": "space-work-alert-analysis",
+    "slug": "alert-analysis",
+    "title": "告警分析与处置建议",
+    "subtitle": "让一组告警，变成有顺序的排查线索",
+    "category": "devops",
+    "tags": ["告警分析", "AI 运维", "TeleAgent", "处置建议"],
+    "priority": 290,
+    "duration": "00:53",
+    "originalFile": "告警分析.mp4",
+    "trimStart": 0,
+    "summary": "从当前未恢复告警出发，由 Agent 调用分析任务，按 CPU、内存等问题整理排查思路，给出处理优先级与后续验证建议。",
+    "intro": "告警列表给出信号，实际排查还需要上下文和执行顺序。这段演示把“分析一下这些告警”的请求，转成任务执行、结果整理和面向运维人员的排查建议。",
+    "workflow": [
+      { "title": "继承告警上下文", "body": "基于会话中已有的资产与告警信息，继续询问当前告警应当如何处理。" },
+      { "title": "调用分析任务", "body": "查看分析任务的提交与执行状态，在同一会话中等待并读取结果。" },
+      { "title": "形成排查顺序", "body": "把内存和 CPU 类问题分别展开，整理定位命令、验证方式和建议处理顺序。" }
+    ],
+    "chapters": [
+      { "seconds": 0, "label": "从告警继续追问" },
+      { "seconds": 12, "label": "分析任务执行" },
+      { "seconds": 28, "label": "查看问题分析" },
+      { "seconds": 44, "label": "处置与验证建议" }
+    ],
+    "boundary": "录屏展示分析与建议生成，未展示这些处置命令被自动执行，也未证明告警已恢复。画面中的指标和建议仅用于说明演示流程，不作为普遍适用的运维结论。"
+  },
+  {
+    "id": "space-work-incident-drilldown",
+    "slug": "incident-drilldown",
+    "title": "数字员工 · 故障下钻",
+    "subtitle": "从一个告警，追问到可对照的指标证据",
+    "category": "agent",
+    "tags": ["数字员工", "故障诊断", "指标分析", "AI 运维"],
+    "priority": 280,
+    "duration": "02:55",
+    "originalFile": "调用故障诊断数字员工进行告警下钻.mp4",
+    "trimStart": 0,
+    "summary": "把具体告警交给故障诊断数字员工，跟踪诊断过程，并对照告警值、历史指标与影响范围，逐步形成带依据的分析结果。",
+    "intro": "进一步追问“为什么告警、证据在哪里”。这段演示从已有告警上下文出发，调用故障诊断数字员工，读取任务结果，并在会话中呈现指标对照与处理建议。",
+    "workflow": [
+      { "title": "明确下钻对象", "body": "在已有告警列表中，选定需要进一步分析的 CPU 与内存相关问题。" },
+      { "title": "交给诊断数字员工", "body": "以自然语言发起下一步分析，观察诊断任务提交和执行过程。" },
+      { "title": "用指标支撑判断", "body": "在结果中查看 CPU、内存、负载的指标对照、趋势描述和影响范围，并区分观察到的现象与待验证的推断。" }
+    ],
+    "chapters": [
+      { "seconds": 0, "label": "明确告警上下文" },
+      { "seconds": 40, "label": "发起数字员工诊断" },
+      { "seconds": 83, "label": "跟踪诊断任务" },
+      { "seconds": 145, "label": "查看指标证据与结论" }
+    ],
+    "boundary": "录屏呈现了诊断结果和建议，不等于独立验证了根因，也未展示变更操作已经执行。后端架构、模型选型及个人负责范围尚待补充。"
+  }
+]

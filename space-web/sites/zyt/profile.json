@@ -1,0 +1,117 @@
+{
+  "name": "张雨彤",
+  "space": "ZYT Space",
+  "stage": "个人资料预览",
+  "description": "我主要写 Vue 前端，也做移动端和鸿蒙应用。做个人项目时，会用 Python 写后端、把前后端联调跑通，再把服务部署到 Linux 上。",
+  "biography": "2021 年到 2025 年，我在泰州学院读计算机科学与技术本科。目前主要往 Vue 前端方向发展，做过管理后台、移动电商和鸿蒙办公应用。常用 Vue2 / Vue3、Vite、Pinia、Vue Router 和 Axios，实践过组件封装、状态管理、接口对接和权限相关交互。\n\n写移动端时会用到 Vant，也熟悉 uni-app 和小程序；做鸿蒙应用时使用 ArkTS、ArkUI，处理页面导航、网络通信、登录状态与缓存数据。React 和 Hooks 也有相关技术积累；Webpack、前端性能优化、Node.js 和 MySQL 则处于了解阶段。\n\n做个人项目时，我也会用 Python 开发后端，完成前后端接口对接与联调。遇到想尝试的点子，会用 Vibe Coding 的方式让 AI 帮忙推进功能，再结合实际运行结果调整代码、一点点完善。\n\n写完之后，我会自己操作 Linux 服务器，完成打包、构建、编译部署和服务运行；使用 Docker 容器，编写 docker-compose.yml，用 Docker Compose 把服务组织起来。运行时碰到问题，就接着排查和处理。\n\n读书时拿过 2022 年蓝桥杯省级三等奖和校内奖学金，也通过了大学英语四级。想把做过的东西和学到的经验慢慢放在这里，有新的尝试，就再添上一点。",
+  "interests": [
+    "Vue",
+    "Python",
+    "HarmonyOS",
+    "Vibe Coding",
+    "Linux",
+    "Docker"
+  ],
+  "experience": null,
+  "skillsVerified": false,
+  "skills": [
+    {
+      "title": "Vue 与 Web 前端",
+      "summary": "HTML/CSS/JavaScript与Vue2/Vue3组件化开发，结合Vite、Pinia、Vue Router、Axios和Element Plus完成业务交互、通用封装与权限交互。",
+      "tags": [
+        "Vue",
+        "JavaScript",
+        "Vite"
+      ],
+      "projectIds": [
+        "zyt-web-admin"
+      ]
+    },
+    {
+      "title": "移动端业务交互",
+      "summary": "使用Vant完成移动端布局与商品列表、收藏、购物车、地址管理等交互；熟悉uni-app和小程序开发。",
+      "tags": [
+        "Vant",
+        "移动端",
+        "状态管理"
+      ],
+      "projectIds": [
+        "zyt-mobile-commerce"
+      ]
+    },
+    {
+      "title": "鸿蒙应用开发",
+      "summary": "使用ArkTS、ArkUI与UIAbility实现页面导航、用户状态和网络通信，具备ArkWeb/ArkData及常用缓存管理相关技术积累。",
+      "tags": [
+        "ArkTS",
+        "ArkUI",
+        "HarmonyOS"
+      ],
+      "projectIds": [
+        "zyt-harmony-office"
+      ]
+    },
+    {
+      "title": "Python 后端与接口联调",
+      "summary": "能够使用Python开发后端服务，结合前端页面完成业务功能、接口对接、前后端联调与问题排查。",
+      "tags": [
+        "Python",
+        "后端开发",
+        "前后端联调"
+      ],
+      "projectIds": []
+    },
+    {
+      "title": "AI 辅助个人项目",
+      "summary": "通过Vibe Coding推进个人项目，结合接口联调和实际运行结果调整代码、完善功能。",
+      "tags": [
+        "AI辅助编程",
+        "Vibe Coding"
+      ],
+      "projectIds": []
+    },
+    {
+      "title": "Linux 部署与排障",
+      "summary": "自行操作Linux服务器，完成个人项目打包、构建、编译部署与服务运行，排查和处理日常问题。",
+      "tags": [
+        "Linux",
+        "构建部署",
+        "问题排查"
+      ],
+      "projectIds": []
+    },
+    {
+      "title": "Docker Compose",
+      "summary": "熟悉Docker容器服务，能够编写docker-compose.yml组织服务部署。",
+      "tags": [
+        "Docker",
+        "Compose"
+      ],
+      "projectIds": []
+    }
+  ],
+  "contentNotice": "资料依据本人提供的简历与补充说明；项目具体职责和成果以详情为准。",
+  "projects": "/api/projects",
+  "updatedAt": "2026-11-16",
+  "introduction": "这里放着我做过的一些项目，也记着把想法慢慢做出来的过程。随便逛逛，有感兴趣的，我们可以接着聊。",
+  "education": {
+    "school": "泰州学院",
+    "major": "计算机科学与技术",
+    "degree": "本科",
+    "period": "2021.09 — 2025.06"
+  },
+  "honors": [
+    {
+      "title": "蓝桥杯 · 省级三等奖",
+      "detail": "2022 年获奖"
+    },
+    {
+      "title": "在校奖学金",
+      "detail": "2022 二等奖学金 · 2023 单项奖学金 · 2024 三等奖学金"
+    },
+    {
+      "title": "大学英语四级",
+      "detail": "CET-4"
+    }
+  ]
+}

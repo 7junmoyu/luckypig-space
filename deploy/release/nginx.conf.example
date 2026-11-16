@@ -1,0 +1,31 @@
+# Include in the host Nginx http{} context. Replace domain and certificate paths.
+# No TLS cert is provisioned by this source template.
+server {
+    listen 80;
+    server_name space.example.com;
+    return 301 https://space.example.com$request_uri;
+}
+server {
+    listen 443 ssl;
+    server_name space.example.com;
+    ssl_certificate /etc/letsencrypt/live/space.example.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/space.example.com/privkey.pem;
+    client_max_body_size 64k;
+
+    location / {
+        proxy_pass http://127.0.0.1:4183;
+        proxy_http_version 1.1;
+        # Exact public Host (including a non-standard port) is needed by owner auth and MCP.
+        proxy_set_header Host $http_host;
+        proxy_set_header Connection "";
+        # Preserve the browser's Origin, Range/If-Range and MCP headers.
+        # Do not set Origin or Access-Control-Allow-Origin here.
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_buffering off;
+        proxy_request_buffering off;
+        proxy_cache off;
+        proxy_read_timeout 180s;
+        proxy_send_timeout 180s;
+        proxy_ignore_client_abort off;
+    }
+}

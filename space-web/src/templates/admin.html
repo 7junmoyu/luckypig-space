@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>模型设置 · %%SITE_name%%</title><link rel="stylesheet" href="/admin.css"><script type="module" src="/admin.js"></script></head>
+<body>
+  <header><a href="/">%%SITE_brand%%<span>.space</span> <i>✳</i></a><a class="back" href="/">返回空间 ↗</a></header>
+  <main>
+    <p class="eyebrow">SPACE / SETTINGS</p><h1>模型 API 设置</h1><p class="intro">在网页中为 %%SITE_guide%% 配置 API 地址、模型名称和 API Key，也可以测试连接和开启联网搜索。保存后从下一次提问生效。</p>
+    <p id="notice" role="status" aria-live="polite">正在检查登录状态…</p>
+    <section id="login-panel" hidden>
+      <h2>站主登录</h2><p class="login-purpose">登录后即可在此页填写、测试并保存模型配置。首次访问需要下方的站主管理口令；以后更换模型无需编辑配置文件。</p><p>在本机终端进入共享程序 <code>space-web/</code> 目录后运行 <code>%%SITE_ownerCommand%%</code> 获取访问口令。此口令与 Halo 登录密码独立。</p>
+      <form id="login-form"><label for="owner-token">访问口令</label><input id="owner-token" type="password" maxlength="256" autocomplete="current-password" required><button type="submit">进入设置 →</button></form>
+    </section>
+    <form id="settings-form" hidden>
+      <fieldset id="settings-fields">
+        <section><div class="section-heading"><div><p class="eyebrow">01 / LANGUAGE MODEL</p><h2>模型连接</h2></div><span id="model-state" class="badge"></span></div>
+          <div class="grid"><div><label for="provider">接口类型</label><select id="provider"><option value="deepseek">DeepSeek</option><option value="openai-compatible">OpenAI 兼容接口</option></select></div><div><label for="model">模型名称</label><input id="model" maxlength="200" placeholder="供应商提供的模型 ID" required></div></div>
+          <label for="base-url">API Base URL</label><input id="base-url" type="url" maxlength="2048" placeholder="https://api.deepseek.com" required><p class="hint">填写接口根地址，保留供应商要求的 /v1 等路径，不包含 /chat/completions。更换服务地址时需要填写新 Key。</p>
+          <label for="model-key">API Key</label><input id="model-key" type="password" maxlength="4096" autocomplete="new-password" placeholder="留空保留已有 Key"><label class="check"><input id="clear-model-key" type="checkbox">清除已有模型 Key</label>
+          <label for="timeout">请求超时（秒）</label><input id="timeout" type="number" min="1" max="120" step="1" required>
+          <button id="test-model" type="button" class="secondary">测试当前填写的模型 ↗</button><p class="hint">测试会发送一次简短生成请求，可能消耗少量模型额度；测试本身不会保存配置。</p>
+        </section>
+        <section><div class="section-heading"><div><p class="eyebrow">02 / WEB SEARCH</p><h2>让答案连接网络</h2></div><span id="search-state" class="badge"></span></div>
+          <label class="check"><input id="search-enabled" type="checkbox">允许访客开启联网搜索</label><p>使用 Tavily 搜索网页摘要，再交给当前模型回答；外部来源会显示为可点击链接。开启后，访客仍可逐轮选择是否联网。</p>
+          <label for="search-key">Tavily API Key</label><input id="search-key" type="password" maxlength="4096" autocomplete="new-password" placeholder="与模型 Key 独立，留空保留已有值"><label class="check"><input id="clear-search-key" type="checkbox">清除已有搜索 Key</label>
+          <button id="test-search" type="button" class="secondary">测试搜索连接 ↗</button><p class="hint">需要独立的 Tavily Key。联网会将当前问题发送给搜索服务，并可能消耗搜索额度；未配置时保持关闭。</p>
+        </section>
+        <div class="actions"><button type="submit">保存并生效 →</button><button id="reload-settings" type="button" class="secondary">恢复已保存配置</button><button id="logout" type="button" class="text-button">退出登录</button></div>
+      </fieldset>
+      <p class="hint">Key 仅存放在网站服务端，保存后不回显。当前生成中的回答继续使用原配置。模型原生协议与特殊参数的兼容性以连接测试为准。</p>
+    </form>
+  </main>
+</body></html>

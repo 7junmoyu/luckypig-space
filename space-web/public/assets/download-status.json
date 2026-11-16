@@ -1,0 +1,6 @@
+{
+  "checkedAt": "2026-11-05",
+  "downloaded": [],
+  "status": "Remote media selected; direct downloads blocked in the current execution environment.",
+  "fallback": "Original Canvas and SVG visuals are local. External media has source links and can be downloaded using npm run assets."
+}

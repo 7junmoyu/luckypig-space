@@ -1,0 +1,16 @@
+const task = await taskSpace('luckypig-functional-mvp');
+const page = task.page('p1');
+await page.goto('http://127.0.0.1:4173/#projects');
+await page.waitForFunction(() => document.documentElement.dataset.ready === 'true', undefined, { timeout: 10000 });
+await page.cdp('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 1, mobile: true });
+const widths = await page.evaluate(() => ({ width: innerWidth, content: document.documentElement.scrollWidth }));
+if (widths.width !== 390 || widths.content > widths.width + 1) throw new Error(`Mobile layout check failed: ${JSON.stringify(widths)}`);
+console.log({ mobileLayout: widths, horizontalOverflow: false });
+await page.cdp('Emulation.clearDeviceMetricsOverride');
+await page.goto('http://127.0.0.1:4173/#project/does-not-exist');
+await page.waitForFunction(() => document.querySelector('#project-detail h2')?.textContent === '作品不存在或已下线', undefined, { timeout: 10000 });
+await page.keyboard.press('Escape');
+if (await page.evaluate(() => document.querySelector('#project-dialog').open)) throw new Error('Esc did not close detail');
+console.log({ missingRouteAndEsc: 'passed' });
+await page.goto('http://127.0.0.1:4173/#projects');
+console.log(await page.snapshot());

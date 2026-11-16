@@ -1,0 +1,31 @@
+name: ${COMPOSE_PROJECT_NAME:-zyt-space}
+services:
+  web:
+    image: ${SPACE_IMAGE:?Set SPACE_IMAGE in the private .env.zyt}
+    platform: ${TARGET_PLATFORM:-linux/amd64}
+    build:
+      context: ../app
+      args:
+        NODE_IMAGE: ${NODE_IMAGE:-node:24-bookworm-slim}
+    init: true
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /tmp:size=32m,mode=1777
+    ports:
+      - "${WEB_BIND:-127.0.0.1}:${WEB_PORT:-4184}:4173"
+    volumes:
+      - web-settings:/app/.local
+    environment:
+      HOST: 0.0.0.0
+      PORT: "4173"
+      SITE_ID: zyt
+      CONTENT_SOURCE: portfolio
+      PUBLIC_URL: ${PUBLIC_URL:?Set PUBLIC_URL in the private .env.zyt}
+      CHAT_MODE: deepseek
+      LLM_BASE_URL: https://api.deepseek.com
+      LLM_MODEL: deepseek-flash
+      WEB_SEARCH_ENABLED: "false"
+    stop_grace_period: 150s
+volumes:
+  web-settings:

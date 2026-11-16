@@ -1,0 +1,42 @@
+name: luckypig-space
+services:
+  halodb:
+    image: ${POSTGRES_IMAGE:-postgres:17}
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: halo
+      POSTGRES_DB: halo
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?请先运行 setup-local.mjs}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -U halo -d halo"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+  halo:
+    image: ${HALO_IMAGE:-halohub/halo:2.27.2}
+    restart: unless-stopped
+    depends_on:
+      halodb:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:8090:8090"
+    volumes:
+      - halo-data:/root/.halo2
+    environment:
+      JVM_OPTS: -Xms256m -Xmx512m
+      SPRING_R2DBC_URL: r2dbc:pool:postgresql://halodb:5432/halo
+      SPRING_R2DBC_USERNAME: halo
+      SPRING_R2DBC_PASSWORD: ${POSTGRES_PASSWORD:?请先运行 setup-local.mjs}
+      SPRING_SQL_INIT_PLATFORM: postgresql
+      HALO_EXTERNAL_URL: ${HALO_EXTERNAL_URL:-http://127.0.0.1:8090}
+    healthcheck:
+      test: [CMD, curl, -fsS, http://localhost:8090/actuator/health/readiness]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 40s
+volumes:
+  postgres-data:
+  halo-data:

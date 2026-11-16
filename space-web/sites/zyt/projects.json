@@ -1,0 +1,102 @@
+[
+  {
+    "id": "zyt-web-admin",
+    "number": "01",
+    "title": "Web 管理后台",
+    "subtitle": "Vue3 + Element Plus",
+    "summary": "用户、角色与权限的统一管理，结合通用组件实现后台业务交互。",
+    "description": "用户、角色与权限的统一管理，结合通用组件实现后台业务交互。用户、角色与权限管理及动态权限控制。 搭建Layout全局框架。 表格、请求与弹窗Hook等通用能力封装。 可视化和主题切换。",
+    "category": "other",
+    "categoryLabel": "开发实践",
+    "tags": [
+      "Vue3",
+      "Element Plus",
+      "Pinia",
+      "Vite",
+      "Axios",
+      "权限控制"
+    ],
+    "format": "项目说明",
+    "visual": "pipeline",
+    "cover": "/assets/covers/zyt-admin.svg",
+    "demo": false,
+    "authorship": "个人简历项目",
+    "mediaCredit": "统一风格流程概念图，非项目运行截图。",
+    "source": null,
+    "steps": [],
+    "learning": "",
+    "content": {
+      "html": "<h2>项目实践</h2><p>用户、角色与权限的统一管理，结合通用组件实现后台业务交互。</p><h3>简历中列出的功能</h3><ul><li>用户、角色与权限管理及动态权限控制。</li><li>搭建Layout全局框架。</li><li>表格、请求与弹窗Hook等通用能力封装。</li><li>可视化和主题切换。</li></ul><h3>个人贡献与成果</h3><p>本页仅介绍简历中列出的项目实践，未提供合作分工或量化成果，不据此推断任职公司或商业上线情况。</p><h3>演示素材</h3><p>录屏、截图、源码或演示链接尚未提供。当前封面为本站绘制的流程概念图，不是实际运行界面。</p>"
+    },
+    "updatedAt": "2026-11-12",
+    "publishedAt": null,
+    "status": "published",
+    "url": "/#project/zyt-web-admin"
+  },
+  {
+    "id": "zyt-mobile-commerce",
+    "number": "02",
+    "title": "移动电商应用",
+    "subtitle": "Vue2 + Vant",
+    "summary": "围绕商品浏览、收藏、购物车与地址管理，实现移动端购物交互。",
+    "description": "围绕商品浏览、收藏、购物车与地址管理，实现移动端购物交互。登录注册及地址管理。 商品列表、上拉加载、分类切换与详情跳转。 收藏、加购和购物车勾选。 数量调整与总价实时计算。",
+    "category": "other",
+    "categoryLabel": "开发实践",
+    "tags": [
+      "Vue2",
+      "Vant",
+      "Axios",
+      "Pinia",
+      "移动端"
+    ],
+    "format": "项目说明",
+    "visual": "pipeline",
+    "cover": "/assets/covers/zyt-commerce.svg",
+    "demo": false,
+    "authorship": "个人简历项目",
+    "mediaCredit": "统一风格流程概念图，非项目运行截图。",
+    "source": null,
+    "steps": [],
+    "learning": "",
+    "content": {
+      "html": "<h2>项目实践</h2><p>围绕商品浏览、收藏、购物车与地址管理，实现移动端购物交互。</p><h3>简历中列出的功能</h3><ul><li>登录注册及地址管理。</li><li>商品列表、上拉加载、分类切换与详情跳转。</li><li>收藏、加购和购物车勾选。</li><li>数量调整与总价实时计算。</li></ul><h3>个人贡献与成果</h3><p>本页仅介绍简历中列出的项目实践，未提供合作分工或量化成果，不据此推断任职公司或商业上线情况。</p><h3>演示素材</h3><p>录屏、截图、源码或演示链接尚未提供。当前封面为本站绘制的流程概念图，不是实际运行界面。</p>"
+    },
+    "updatedAt": "2026-11-12",
+    "publishedAt": null,
+    "status": "published",
+    "url": "/#project/zyt-mobile-commerce"
+  },
+  {
+    "id": "zyt-harmony-office",
+    "number": "03",
+    "title": "鸿蒙移动办公",
+    "subtitle": "ArkTS + ArkUI",
+    "summary": "面向移动办公场景，实践用户中心、页面导航、请假申请与状态管理。",
+    "description": "面向移动办公场景，实践用户中心、页面导航、请假申请与状态管理。登录注册与用户信息管理。 底部导航和多页面跳转。 请假申请、详情展示及交互。 登录状态、用户信息与缓存数据统一管理。",
+    "category": "other",
+    "categoryLabel": "开发实践",
+    "tags": [
+      "ArkTS",
+      "ArkUI",
+      "TypeScript",
+      "HTTP",
+      "UIAbility"
+    ],
+    "format": "项目说明",
+    "visual": "pipeline",
+    "cover": "/assets/covers/zyt-harmony.svg",
+    "demo": false,
+    "authorship": "个人简历项目",
+    "mediaCredit": "统一风格流程概念图，非项目运行截图。",
+    "source": null,
+    "steps": [],
+    "learning": "",
+    "content": {
+      "html": "<h2>项目实践</h2><p>面向移动办公场景，实践用户中心、页面导航、请假申请与状态管理。</p><h3>简历中列出的功能</h3><ul><li>登录注册与用户信息管理。</li><li>底部导航和多页面跳转。</li><li>请假申请、详情展示及交互。</li><li>登录状态、用户信息与缓存数据统一管理。</li></ul><h3>个人贡献与成果</h3><p>本页仅介绍简历中列出的项目实践，未提供合作分工或量化成果，不据此推断任职公司或商业上线情况。</p><h3>演示素材</h3><p>录屏、截图、源码或演示链接尚未提供。当前封面为本站绘制的流程概念图，不是实际运行界面。</p>"
+    },
+    "updatedAt": "2026-11-12",
+    "publishedAt": null,
+    "status": "published",
+    "url": "/#project/zyt-harmony-office"
+  }
+]

@@ -1,0 +1,50 @@
+{
+  "name": "luckypig-space-web",
+  "version": "0.3.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "start:zyt": "node scripts/start-zyt.mjs",
+    "runtime": "node -e 'import(\"./src/runtime.mjs\").then(m => console.log(JSON.stringify(m.runtimeInfo())))'",
+    "dev": "node scripts/dev.mjs",
+    "setup": "node scripts/setup-local.mjs",
+    "demo": "CONTENT_SOURCE=demo CHAT_MODE=local-demo node server.mjs",
+    "check": "node --check server.mjs && node --check src/agent.mjs && node --check src/mcp.mjs && node --check src/chat.mjs && node --check src/http.mjs && node --check public/app.js && node --check public/personal-home.js && node --check public/hero-carousel.js && node --check public/chat-stream.js && node --check public/rich-content.js && node --check scripts/backup.mjs && node --check scripts/verify-local.mjs && node --check scripts/verify-publication.mjs && node --check scripts/verify-m5.mjs && node --check src/runtime.mjs && node --check scripts/test.mjs && node --check scripts/halo-admin.mjs && node --check scripts/verify-storage.mjs && node --check public/recording-player.js && node --check scripts/import-recordings.mjs && node --check scripts/verify-recordings.mjs && node --check scripts/verify-halo.mjs && node --check scripts/build-recording-covers.mjs && node --check scripts/apply-recording-covers.mjs && node --check src/settings.mjs && node --check src/owner-auth.mjs && node --check src/llm.mjs && node --check src/search.mjs && node --check public/admin.js && node --check scripts/owner-token.mjs && node --check scripts/verify-model-settings.mjs && node --check src/project-retrieval.mjs && node --check public/browse-state.js && node --check scripts/release.mjs && node --check scripts/build-image.mjs && node --check scripts/container-health.mjs && node scripts/check.mjs && node --check src/site.mjs && node --check src/config.mjs && node scripts/render-default-site.mjs --check && node --check scripts/package-zyt.mjs",
+    "test": "node scripts/test.mjs",
+    "test:halo": "node scripts/verify-halo.mjs",
+    "test:agent": "node scripts/verify-agent.mjs",
+    "test:codex": "node scripts/verify-codex.mjs",
+    "test:local": "node scripts/verify-local.mjs",
+    "backup": "node scripts/backup.mjs create",
+    "backup:check": "node scripts/backup.mjs check",
+    "backup:rehearse": "node scripts/backup.mjs rehearse",
+    "halo:wait": "node scripts/wait-halo.mjs",
+    "assets": "node scripts/download-assets.mjs",
+    "test:m5": "node scripts/verify-m5.mjs",
+    "test:publication": "node scripts/verify-publication.mjs",
+    "test:storage": "node scripts/verify-storage.mjs",
+    "import:recordings": "node scripts/import-recordings.mjs",
+    "test:recordings": "node scripts/verify-recordings.mjs",
+    "covers:svg": "node scripts/build-recording-covers.mjs",
+    "covers:apply": "node scripts/apply-recording-covers.mjs",
+    "owner:token": "node scripts/owner-token.mjs",
+    "test:settings": "node scripts/verify-model-settings.mjs",
+    "release:prepare": "node scripts/release.mjs prepare",
+    "release:check": "node scripts/release.mjs check",
+    "image:build": "node scripts/build-image.mjs",
+    "site:sync": "node scripts/render-default-site.mjs",
+    "zyt:pack": "node scripts/package-zyt.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/node": "2.1.2",
+    "@modelcontextprotocol/server": "2.4.0",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/client": "2.4.0"
+  }
+}

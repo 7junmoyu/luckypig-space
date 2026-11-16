@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Luckypig public profile v1",
+  "type": "object",
+  "required": ["name", "description", "interests", "contentNotice", "projects", "chat", "agent"],
+  "properties": {
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "biography": { "type": "string" },
+    "interests": { "type": "array", "items": { "type": "string" } },
+    "contentNotice": { "type": "string" },
+    "projects": { "const": "/api/projects" },
+    "experience": { "type": "null" },
+    "skillsVerified": { "type": "boolean" },
+    "chat": {
+      "type": "object",
+      "properties": {
+        "mode": { "enum": ["local-demo", "deepseek"] },
+        "configured": { "type": "boolean", "description": "Configured does not verify model connectivity." },
+        "model": { "type": ["string", "null"] },
+        "lastSuccessfulResponseAt": { "type": ["string", "null"], "description": "Last complete model response in this server process; not a current health probe." },
+        "llmConnected": { "type": "boolean", "deprecated": true, "description": "Legacy demo fixtures only; use configured and lastSuccessfulResponseAt for runtime state." }
+      }
+    },
+    "agent": {
+      "type": "object",
+      "properties": { "publicContent": { "const": true }, "mcpAvailable": { "type": "boolean" }, "skillAvailable": { "type": "boolean" }, "mcpUrl": { "type": "string" }, "skillUrl": { "type": "string" } }
+    }
+  }
+}

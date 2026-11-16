@@ -1,0 +1,7 @@
+# Merge this table into the user's Codex config; do not replace existing tables.
+# For a deployed website, replace the loopback URL with its public /mcp URL.
+[mcp_servers.luckypig-space]
+url = "http://127.0.0.1:4173/mcp"
+enabled_tools = ["get_profile", "search_projects", "get_project", "list_capabilities"]
+startup_timeout_sec = 20
+tool_timeout_sec = 30

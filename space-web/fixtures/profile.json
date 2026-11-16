@@ -1,0 +1,14 @@
+{
+  "name": "Luckypig",
+  "space": "Luckypig Space",
+  "description": "面向人与 Agent 的个人 AI 创作空间。",
+  "stage": "视觉与交互原型",
+  "contentNotice": "当前展示公开项目参考案例，不是站主的个人作品或履历。",
+  "interests": ["AI 创作", "Agent", "DevOps"],
+  "experience": null,
+  "skillsVerified": false,
+  "projects": "./projects.json",
+  "chat": {"mode": "local-demo", "llmConnected": false},
+  "agent": {"publicContent": true, "mcpAvailable": false, "skillAvailable": false},
+  "updatedAt": "2026-11-05"
+}

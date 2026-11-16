@@ -1,0 +1,34 @@
+[
+  {
+    "id": "comfy-workflow", "number": "01", "title": "灵感的下一种形状", "subtitle": "A visual generation playground", "category": "ai", "categoryLabel": "AI 创作", "format": "图像 / 工作流", "visual": "creative", "tags": ["ComfyUI", "Generative Art", "Workflow"],
+    "summary": "从一段提示词到一组视觉探索，理解节点式工作流如何连接创意与生成。",
+    "description": "本案例以 ComfyUI 官方公开资料为参考，演示生成式视觉作品在个人站点中的呈现方式。ComfyUI 使用节点图组织生成流程，可承载图像、视频等创作工作流。这里的封面是本站制作的生成式视觉示意，不是已运行的模型输出。",
+    "steps": [{"title":"输入灵感","body":"用文字、图像与参数表达创作方向。"},{"title":"组织工作流","body":"将输入、模型与生成步骤连接成可理解的节点图。"},{"title":"整理视觉成果","body":"为作品保留素材、过程说明和参考链接。"}],
+    "learning": "把最终画面与创作过程放在同一个项目中，让观看者既能看见结果，也能理解方法。",
+    "source": {"name": "Comfy-Org / ComfyUI", "url": "https://github.com/Comfy-Org/ComfyUI"}, "demo": true, "authorship": "开源参考案例，非站主个人成果", "mediaCredit": "封面：本站原创 Canvas 视觉。背景参考图：and machines / Unsplash。"
+  },
+  {
+    "id": "gitops-delivery", "number": "02", "title": "让发布，像提交一样自然", "subtitle": "From commit to continuous delivery", "category": "devops", "categoryLabel": "DevOps", "format": "架构 / 动态演示", "visual": "pipeline", "tags": ["Kubernetes", "Argo CD", "GitOps"],
+    "summary": "以 Git 作为期望状态的来源，探索从代码提交到集群同步的交付路径。",
+    "description": "本案例依据 Argo CD 官方介绍编写。Argo CD 是面向 Kubernetes 的声明式 GitOps 持续交付工具。本站使用原创动画示意提交、构建与同步的关系；动画展示概念，不连接真实集群。",
+    "steps": [{"title":"Git 中描述期望","body":"将应用配置与变更放入版本管理。"},{"title":"持续协调状态","body":"观察期望状态与运行状态的差异，理解声明式交付。"},{"title":"可视化交付过程","body":"通过状态与资源关系让变更更容易解释。"}],
+    "learning": "在作品展示中，让访客沿着一条清晰的链路理解系统，而不只展示一张复杂的架构图。",
+    "source": {"name": "Argo Project / Argo CD", "url": "https://argoproj.github.io/cd/"}, "referenceMedia": "https://argoproj.github.io/argo-cd-ui.gif", "demo": true, "authorship": "开源参考案例，非站主个人成果", "mediaCredit": "封面：本站原创 SVG 交付流程示意。可选动态素材来自 Argo CD 官网，遵循来源项目的适用许可。"
+  },
+  {
+    "id": "knowledge-agent", "number": "03", "title": "让知识，拥有自己的接口", "subtitle": "Knowledge that you can talk to", "category": "agent", "categoryLabel": "Agent 实践", "format": "交互 / 文字", "visual": "knowledge", "tags": ["RAG", "LangChain", "Knowledge"],
+    "summary": "将资料组织成可以查询和引用的上下文，让每一个回答都有迹可循。",
+    "description": "以 LangChain 官方公开资料为背景，本案例展示知识助手的产品表达方式：先找到相关内容，再把内容作为回答依据。这里没有部署 LangChain 或向量数据库；会话侧栏是基于当前参考资料的本地交互演示。",
+    "steps": [{"title":"组织内容","body":"将个人介绍、作品摘要与资料链接整理为统一结构。"},{"title":"发现关联","body":"根据问题查找相关作品，保留来源与上下文。"},{"title":"有依据地回答","body":"将回答与可打开的资料关联，不补写未知经历。"}],
+    "learning": "网页和外部 Agent 共享可引用的内容基础，让作品不只是可读，也可以被发现和连接。",
+    "source": {"name": "LangChain 官方源码", "url": "https://github.com/langchain-ai/langchain"}, "demo": true, "authorship": "概念参考案例，非站主已完成的项目", "mediaCredit": "封面：本站原创 SVG 知识连接示意。"
+  },
+  {
+    "id": "observability", "number": "04", "title": "看见系统，听懂信号", "subtitle": "Signals into understanding", "category": "devops", "categoryLabel": "DevOps", "format": "数据 / 可视化", "visual": "metrics", "tags": ["Grafana", "Observability", "Metrics"],
+    "summary": "把指标、日志与追踪变成可以理解的信号，探索系统的另一种叙事。",
+    "description": "本案例参考 Grafana 官方开源项目。Grafana 用于连接数据源并可视化指标、日志与追踪。本站封面中的数值与曲线为演示数据，不代表真实监控、可用率或用户的工作成果。",
+    "steps": [{"title":"聚合信号","body":"从指标、日志与追踪三个角度组织观察入口。"},{"title":"建立上下文","body":"将趋势与相关事件关联，让变化可解释。"},{"title":"呈现有用的信息","body":"让可视化服务于发现问题，而不只是一屏数字。"}],
+    "learning": "用经过选择的信号和解释展示工程思考，而不是用未经核实的指标声称成果。",
+    "source": {"name": "Grafana 官方源码", "url": "https://github.com/grafana/grafana"}, "demo": true, "authorship": "开源参考案例，非站主个人成果", "mediaCredit": "封面：本站原创 SVG 图表，使用明确标记的演示数据。"
+  }
+]
